@@ -173,12 +173,12 @@ a {
 }
 .contentname {
     height: 100%;
-    width: 70%;
+    width: 60%;
     display: inline-block;
 }
 .contentheight {
     height: 100%;
-    width: 25%;
+    width: 35%;
     display: inline-block;
     padding-right: 15px;
 }
