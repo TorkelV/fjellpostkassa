@@ -64,13 +64,19 @@
 (defn visits-mountain-for-user [userid mountainid]
   (sql/query db ["select count(u_id) as visits from visits where u_id = ? and m_id = ?" userid mountainid]))
 
-(defn global-user-rank [userid]
+(defn user-rank-visits [userid]
   (sql/query db ["select rank from (SELECT DENSE_RANK() OVER(ORDER BY a.c desc) as rank,
 	   c as visits, u_id, username
     FROM (SELECT visits.u_id, count(visits.u_id) as c, users.username from visits
 	  INNER JOIN users on users.id = visits.u_id::bigint
 	  GROUP BY visits.u_id, username) a) b
 	  where u_id = ?" userid]))
+
+(defn user-rank-mountains [userid]
+  (sql/query db ["select rank from (SELECT DENSE_RANK() OVER(ORDER BY a.c desc) as rank,\n\t   c as visits, u_id, username\n
+              FROM (SELECT visits.u_id, count(distinct visits.m_id) as c, users.username from visits\n\t
+              INNER JOIN users on users.id = visits.u_id::bigint\n\t  GROUP BY visits.u_id, username) a) b\n\t
+              where u_id = ?" userid]))
 
 
 (defn date-now []
@@ -86,24 +92,28 @@
   (routes
     (GET "/total-visits/" []
       {:status  200
-       :headers {"Content-Type" "application/json"}
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
        :body    (json/write-str (total-visits))})
     (GET "/total-unique-visits/" []
       {:status  200
-       :headers {"Content-Type" "application/json"}
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
        :body    (json/write-str (total-unique-visits))})
     (GET "/all-visits-mountain/:mountainid" [mountainid :as req]
       {:status  200
-       :headers {"Content-Type" "application/json"}
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
        :body    (json/write-str (all-visits-mountain mountainid))})
-    (GET "/global-user-rank/:userid" [userid :as req]
+    (GET "/user-rank-mountains/:userid" [userid :as req]
       {:status  200
-       :headers {"Content-Type" "application/json"}
-       :body    (json/write-str (:rank (global-user-rank userid)))})
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
+       :body    (json/write-str  (user-rank-mountains userid))})
+    (GET "/user-rank-visits/:userid" [userid :as req]
+      {:status  200
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
+       :body    (json/write-str  (user-rank-visits userid))})
     (GET "/visits-mountain-for-user/:userid/:mountainid" [userid mountainid]
       {:status  200
-       :headers {"Content-Type" "application/json"}
-       :body    (json/write-str (:visits (visits-mountain-for-user userid mountainid)))})))
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
+       :body    (json/write-str (visits-mountain-for-user userid mountainid))})))
 
 
 (defn create-server []
