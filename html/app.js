@@ -19,7 +19,6 @@ async function userRankVisits(userid){
 }
 
 async function mountainVisitsForUser(userid, mountainid){
-	console.log(`http://localhost:8080/visits-mountain-for-user/${userid}/${mountainid}`)
 	return await $.get(`http://localhost:8080/visits-mountain-for-user/${userid}/${mountainid}`);
 }
 
