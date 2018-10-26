@@ -1,0 +1,6 @@
+﻿let rand=n=>((Math.random()*n)+1)|0;
+let d = new Date();
+d.setDate(d.getDate()-600);
+
+
+[...Array(600)].fill(600).map(e=>[rand(22),rand(35),((d.setDate(d.getDate()+1)),d.toISOString()),""]).map(a=>a.map(e=>e.toString()))
