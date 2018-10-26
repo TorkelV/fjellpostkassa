@@ -78,6 +78,11 @@
               INNER JOIN users on users.id = visits.u_id::bigint\n\t  GROUP BY visits.u_id, username) a) b\n\t
               where u_id = ?" userid]))
 
+(defn get-mountains []
+  (sql/query db ["select m.m_id as mountainid, u.username as lastVisitor ,v.time as lastVisitTime, m.coordinates as coords, m.height as height, m.name as mountainName from mountain m\nleft join lateral (select time, m_id, u_id from visits where visits.m_id::bigint = m.m_id order by time desc limit 1) v on m.m_id = v.m_id::bigint\ninner join users u on v.u_id::bigint =u.id"]))
+
+(defn get-guestbook [mountainid]
+  (sql/query db ["select\tu.id as userid,\n\t\tu.username as username,\n\t\tv.time as visittime,\n\t\tv.comment as comment\nfrom visits v inner join users u on v.u_id::bigint = u.id\nwhere v.m_id = ?" mountainid] ))
 
 (defn date-now []
   (str (java.time.LocalDateTime/now)))
@@ -110,6 +115,14 @@
       {:status  200
        :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
        :body    (json/write-str  (user-rank-visits userid))})
+    (GET "/get-mountains/" []
+      {:status  200
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
+       :body    (json/write-str  (get-mountains))})
+    (GET "/get-guestbook/:mountainid" [mountainid :as req]
+      {:status  200
+       :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
+       :body    (json/write-str  (get-guestbook mountainid))})
     (GET "/visits-mountain-for-user/:userid/:mountainid" [userid mountainid]
       {:status  200
        :headers {"Content-Type" "application/json" "Access-Control-Allow-Origin" "*"}
