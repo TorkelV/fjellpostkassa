@@ -1,0 +1,186 @@
+    .header {
+        width: 100%;
+        text-align: center;
+        height: 10vh;
+        position: fixed;
+        background: #1E6995;
+        color: #fff;
+    }
+    .header .destinations, .header .leaderboard, .header .map {
+        display: inline-block;
+        margin: 0;
+    }
+    .header .destinations, .header .leaderboard, .header .map {
+        font-size: 3em;
+    }
+    .header .menu {
+        width: 13%;
+    }
+    .header .destinations {
+        width: 35%;
+    }
+    .header .leaderboard {
+        width: 35%;
+    }
+    .header .map {
+        width: 15%;
+    }
+    .fjell,.rangering,.kart {
+      margin-top: 3vh;
+    }
+    .header .menu {
+      margin-top: -1vh;
+      display: inline-block;
+    }
+    .list {
+      height: 90vh;
+      width: 100%;
+      padding-top: 10vh;
+      background: #FFE0BA;
+    }
+    .list .item {
+      /*width: 100%;*/
+      height: 20vh;
+      border-bottom: 1px solid #efefef;
+      padding-left: 20px;
+      /*padding-right: 20px;*/
+    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica";
+}
+a {
+  text-decoration: none;
+  color: #232323;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 10px;
+  left: 50px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+#menuToggle span {
+  display: block;
+  width: 50px;
+  height: 6px;
+  margin-bottom: 8px;
+  position: relative;
+  background: #fff;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
+}
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+#menu {
+    position: absolute;
+    width: 300px;
+    margin: 69px 0 0 -53px;
+    padding: 0 20px;
+    background: #ededed;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+#menu li {
+  padding: 10px 0;
+  font-size: 40px;
+  padding-bottom: 15px;
+  border: 0 0 1px 0 solid black;
+}
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+.image {
+    width: 30%;
+    padding-right: 15px;
+    display: inline-block;
+}
+.content {
+    height: 100%;
+    width: 65%;
+    display: inline-block;
+}
+.image .itemimage {
+    height: 100%;
+    width: 100%;
+}
+.image .visits {
+  height: 20px;
+  width: 20px;
+  float: right;
+  font-size: 30px;
+  border: 3px solid #1E6995;
+  border-radius: 50%;
+  padding: 5px 11px 17px 15px;
+  margin: 0 0 10px 0;
+  background: #1E6995;
+  color: #fff;
+}
+.title {
+    width: 100%;
+    height: 40%;
+}
+.subcontent {
+    width: 100%;
+    height: 55%;
+}
+.content {
+    font-size: 40px;
+    padding-left: 20px;
+}
+.contentname {
+    height: 100%;
+    width: 70%;
+    display: inline-block;
+}
+.contentheight {
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+    padding-right: 15px;
+}
+.totalvisits, .lastvisit{
+    width: 100%;
+    height: 48%;
+    margin: 0;
+}
+
