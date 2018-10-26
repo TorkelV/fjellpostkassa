@@ -1,50 +1,51 @@
-    .header {
-        width: 100%;
-        text-align: center;
-        height: 10vh;
-        position: fixed;
-        background: #1E6995;
-        color: #fff;
-    }
-    .header .destinations, .header .leaderboard, .header .map {
-        display: inline-block;
-        margin: 0;
-    }
-    .header .destinations, .header .leaderboard, .header .map {
-        font-size: 3em;
-    }
-    .header .menu {
-        width: 13%;
-    }
-    .header .destinations {
-        width: 35%;
-    }
-    .header .leaderboard {
-        width: 35%;
-    }
-    .header .map {
-        width: 15%;
-    }
-    .fjell,.rangering,.kart {
-      margin-top: 3vh;
-    }
-    .header .menu {
-      margin-top: -1vh;
-      display: inline-block;
-    }
-    .list {
-      height: 90vh;
-      width: 100%;
-      padding-top: 10vh;
-      background: #FFE0BA;
-    }
-    .list .item {
-      /*width: 100%;*/
-      height: 20vh;
-      border-bottom: 1px solid #efefef;
-      padding-left: 20px;
-      /*padding-right: 20px;*/
-    }
+.header {
+  width: 100%;
+  text-align: center;
+  height: 10vh;
+  position: fixed;
+  background: #1E6995;
+  color: #fff;
+}
+.header .destinations, .header .leaderboard, .header .map {
+  display: inline-block;
+  margin: 0;
+}
+.header .destinations, .header .leaderboard, .header .map {
+  font-size: 3em;
+}
+.header .menu {
+  width: 13%;
+}
+.header .destinations {
+  width: 35%;
+}
+.header .leaderboard {
+  width: 35%;
+  text-align: left;
+}
+.header .map {
+  width: 15%;
+  text-align: left;
+}
+.fjell,.rangering,.kart {
+  margin-top: 3vh;
+}
+.header .menu {
+  margin-top: -1vh;
+  display: inline-block;
+}
+.list {
+  height: 90vh;
+  width: 100%;
+  padding-top: 10vh;
+  /*background: #FFE0BA;*/
+}
+.list .item {
+  height: 20vh;
+  border-bottom: 1px solid #efefef;
+  padding-left: 20px;
+  margin-bottom: -20px;
+}
 body {
   margin: 0;
   padding: 0;
@@ -110,10 +111,10 @@ a {
 }
 #menu {
     position: absolute;
-    width: 300px;
+    width: 940px;
     margin: 69px 0 0 -53px;
     padding: 0 20px;
-    background: #ededed;
+    background: #b1d8ee;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
@@ -122,9 +123,12 @@ a {
 }
 #menu li {
   padding: 10px 0;
-  font-size: 40px;
+  font-size: 50px;
   padding-bottom: 15px;
-  border: 0 0 1px 0 solid black;
+  border-bottom: 1px solid black;
+}
+#menu a:nth-last-child(1) li{
+  border-bottom: none;
 }
 #menuToggle input:checked ~ ul {
   transform: none;
@@ -183,4 +187,9 @@ a {
     height: 48%;
     margin: 0;
 }
-
+div .item:nth-last-child(even) {
+  background: #FFE0BA;
+}
+div .item:nth-last-child(odd) {
+  background: #FFcc8f;
+}
