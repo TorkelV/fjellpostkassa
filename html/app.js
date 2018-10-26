@@ -26,8 +26,8 @@ async function getGuestbook(mountainid){
 	return await $.get(`http://localhost:8080/get-guestbook/${mountainid}`);
 }
 
-async function getMountains(){
-	return await $.get(`http://localhost:8080/get-mountains/`);
+async function getMountains(userid){
+	return await $.get(`http://localhost:8080/get-mountains/${userid}`);
 }
 
 
@@ -40,3 +40,27 @@ userRankVisits("1").then(e=>console.log(e));
 mountainVisitsForUser("1","1").then(e=>console.log(e));
 getMountains().then(e=>console.log(e));
 getGuestbook("1",).then(e=>console.log(e));
+
+
+
+var app = new Vue({
+            el: '#app',
+            data: {
+                noDataFound: false,
+				userid: 1
+            },
+            computed: {
+            },
+			asyncComputed: {
+				mountains () {
+				  return getMountains().then(e=>e);
+				}
+			},
+            watch: {
+              uploaded: function(uploaded){
+              } 
+            },
+            methods: {
+                
+            }
+        })

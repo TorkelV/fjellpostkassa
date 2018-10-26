@@ -3,9 +3,12 @@
 <head>
     <title></title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-async-computed@3.4.1"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="app">
 <div class="header">
     <div class="menu">
         <nav role="navigation">
@@ -24,13 +27,26 @@
           </div>
         </nav>
     </div>
-    <div class="destinations"><p>Mountains</p></div>
-    <div class="leaderboard"><p>Leaderboard</p></div>
-    <div class="map"><p>Map</p></div>
+    <div class="destinations"><p class="fjell">Fjell</p></div>
+    <div class="leaderboard"><p class="rangering">Rangering</p></div>
+    <div class="map"><p class="kart">Kart</p></div>
 </div>
 <div class="list">
-    <div class="item">
-        <p>First item</p>
+    <div v-for="m in mountains" class="item">
+        <div class="image">
+            <p class="visits">{{m.uservisits}}</p>
+            <img class="itemimage" src="{{m.id}}.jpg">
+        </div>
+        <div class="content">
+            <div class="title">
+                <div class="contentname"><p>{{m.mountainname}}</p></div>
+                <div class="contentheight"><p>{{m.height}} moh</p></div>
+            </div>
+            <div class="subcontent">
+                <p class="totalvisits">Antall besøk: {{m.totalvisits}}</p>
+                <p class="lastvisit">Siste besøkende: {{m.lastvisitor}}</p>
+            </div>
+        </div>
     </div>
     <div class="item">
         <p>Second item</p>
@@ -45,131 +61,7 @@
         <p>Fifth item</p>
     </div>
 </div>
+</div>
 <script src="app.js"></script>
 </body>
 </html>
-
-<style type="text/css">
-    .header {
-        width: 100%;
-        text-align: center;
-        height: 10vh;
-        position: fixed;
-        background: #ccc;
-    }
-    .header .menu, .header .destinations, .header .leaderboard, .header .map {
-        display: inline-block;
-        margin: 0;
-    }
-    .header .destinations, .header .leaderboard, .header .map {
-        font-size: 3em;
-    }
-    .header .menu {
-        width: 13%;
-    }
-    .header .destinations {
-        width: 35%;
-    }
-    .header .leaderboard {
-        width: 35%;
-    }
-    .header .map {
-        width: 15%;
-    }
-    .list {
-        height: 90vh;
-        width: 100%;
-        padding-top: 10vh;
-    }
-    .list .item {
-        width: 100%;
-        height: 20vh;
-    }
-body {
-  margin: 0;
-  padding: 0;
-}
-a {
-  text-decoration: none;
-  color: #232323;
-  
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: tomato;
-}
-#menuToggle {
-  display: block;
-  position: relative;
-  top: 50px;
-  left: 50px;
-  z-index: 1;
-  -webkit-user-select: none;
-  user-select: none;
-}
-#menuToggle input {
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  cursor: pointer;
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
-  -webkit-touch-callout: none;
-}
-#menuToggle span {
-  display: block;
-  width: 50px;
-  height: 6px;
-  margin-bottom: 5px;
-  position: relative;
-  background: #000;
-  border-radius: 3px;
-  z-index: 1;
-  transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
-}
-#menuToggle span:first-child {
-  transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2) {
-  transform-origin: 0% 100%;
-}
-#menuToggle input:checked ~ span {
-  opacity: 1;
-  transform: rotate(45deg);
-  background: #232323;
-}
-#menuToggle input:checked ~ span:nth-last-child(3) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-#menuToggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
-}
-#menu {
-    position: absolute;
-    width: 300px;
-    margin: 32px 0 0 -53px;
-    padding: 50px;
-    background: #ededed;
-    list-style-type: none;
-    -webkit-font-smoothing: antialiased;
-    transform-origin: 0% 0%;
-    transform: translate(-100%, 0);
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-#menu li {
-  padding: 10px 0;
-  font-size: 22px;
-}
-#menuToggle input:checked ~ ul {
-  transform: none;
-}
-
-</style>
