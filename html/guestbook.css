@@ -1,0 +1,16 @@
+.header .gjestebok, .header .ledere {
+  width: 35%;
+  text-align: center;
+}
+.header .map {
+    text-align: center;
+}
+.list table {
+    font-size: 40px;
+}
+.list table td {
+    text-align: center; 
+}
+#menu {
+    margin-left: -129px;
+}
