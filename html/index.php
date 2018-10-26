@@ -28,7 +28,20 @@
 </div>
 <div class="list">
     <div class="item">
-        <p>First item</p>
+        <div class="image">
+            <p class="visits">2</p>
+            <img class="itemimage" src="1.jpg">
+        </div>
+        <div class="content">
+            <div class="title">
+                <div class="contentname"><p>Lyshorn</p></div>
+                <div class="contentheight"><p>300 moh</p></div>
+            </div>
+            <div class="subcontent">
+                <p class="totalvisits">Antall besøk: 5</p>
+                <p class="lastvisit">Siste besøkende: Torkel V.</p>
+            </div>
+        </div>
     </div>
     <div class="item">
         <p>Second item</p>
@@ -85,6 +98,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Helvetica";
 }
 a {
   text-decoration: none;
@@ -98,7 +112,7 @@ a:hover {
 #menuToggle {
   display: block;
   position: relative;
-  top: 50px;
+  top: 15px;
   left: 50px;
   z-index: 1;
   -webkit-user-select: none;
@@ -120,7 +134,7 @@ a:hover {
   display: block;
   width: 50px;
   height: 6px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   position: relative;
   background: #000;
   border-radius: 3px;
@@ -139,7 +153,7 @@ a:hover {
 }
 #menuToggle input:checked ~ span {
   opacity: 1;
-  transform: rotate(45deg);
+  transform: rotate(45deg) translate(-2px, -1px);
   background: #232323;
 }
 #menuToggle input:checked ~ span:nth-last-child(3) {
@@ -152,7 +166,7 @@ a:hover {
 #menu {
     position: absolute;
     width: 300px;
-    margin: 32px 0 0 -53px;
+    margin: 69px 0 0 -53px;
     padding: 50px;
     background: #ededed;
     list-style-type: none;
@@ -168,5 +182,54 @@ a:hover {
 #menuToggle input:checked ~ ul {
   transform: none;
 }
+.image {
+    width: 30%;
+    padding-right: 15px;
+    display: inline-block;
+}
+.content {
+    height: 100%;
+    width: 65%;
+    display: inline-block;
+}
+.image .itemimage {
+    height: 100%;
+    width: 100%;
+}
+.image .visits {
+    height: 20px;
+    width: 100%;
+    text-align: right;
+    font-size: 30px;
+}
+.title {
+    width: 100%;
+    height: 40%;
+}
+.subcontent {
+    width: 100%;
+    height: 55%;
+}
+.content {
+    font-size: 40px;
+    padding-left: 20px;
+}
+.contentname {
+    height: 100%;
+    width: 70%;
+    display: inline-block;
+}
+.contentheight {
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+    padding-right: 15px;
+}
+.totalvisits, .lastvisit{
+    width: 100%;
+    height: 48%;
+    margin: 0;
+}
+
 
 </style>
