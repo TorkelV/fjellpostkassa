@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Gjestebok</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-async-computed@3.4.1"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="guestbook.css">
 </head>
 <body>
+	<div id="app">
     <div class="header">
         <div class="menu">
             <nav role="navigation">
@@ -31,36 +36,18 @@
     <div class="list">
         <table style="width:100%">
             <tr>
-                <th>Rangering</th>
-                <th>Navn</th> 
-                <th>Antall</th>
-                <th>Sist besøkt</th>
+                <th>Navn</th>
+                <th>Tid</th> 
+                <th>Kommentar</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Alex Gjerrud</td> 
-                <td>9</td>
-                <td>24.10.2018</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Marina Atkina</td> 
-                <td>8</td>
-                <td>24.10.2018</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Torkel Velure</td> 
-                <td>4</td>
-                <td>20.10.2018</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Ivarr Warren Herrera Reyna</td> 
-                <td>2</td>
-                <td>10.04.2018</td>
+            <tr v-for="guest in guestbook">
+                <td>{{guest.username}}</td>
+                <td>{{guest.visittime}}</td> 
+                <td>{{guest.comment}}</td>
             </tr>
         </table>
     </div>
+	</div>
+	<script src="app.js"></script>
 </body>
 </html>

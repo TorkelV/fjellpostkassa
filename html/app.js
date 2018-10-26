@@ -50,10 +50,16 @@ var app = new Vue({
 				userid: 1
             },
             computed: {
+				mountainid () {
+					return jQuery.url().param("mountainid");
+				}
             },
 			asyncComputed: {
 				mountains () {
 				  return getMountains().then(e=>e);
+				},
+				guestbook (){
+					return getGuestbook(this.mountainid).then(e=>e);
 				}
 			},
             watch: {
