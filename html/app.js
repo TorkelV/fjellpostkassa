@@ -63,6 +63,9 @@ var app = new Vue({
 				guestbook (){
 					return getGuestbook(this.mountainid).then(e=>e.map(a=>(a.visittime=new Date(a.visittime).toLocaleString('en-GB').slice(0,-3),a)));
 				},
+				mountainName(){
+					return getGuestbook(this.mountainid).then(e=>e[0].name);
+				},
 				mountainLeaderboard(){
 					return allVisitsForMountain(this.mountainid).then(e=>e);
 				},

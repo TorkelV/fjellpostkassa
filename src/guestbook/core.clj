@@ -82,7 +82,7 @@
   (sql/query db ["select coalesce(h.uservisits,0) as uservisits, v2.totalVisits as totalvisits, m.m_id as mountainid, u.username as lastVisitor ,v.time as lastVisitTime, m.coordinates as coords, m.height as height, m.name as mountainName from mountain m\nleft join lateral (select time, m_id, u_id from visits where visits.m_id::bigint = m.m_id order by time desc limit 1) v on m.m_id = v.m_id::bigint\ninner join users u on v.u_id::bigint =u.id\ninner join lateral (select m_id, count(visits.m_id) as totalVisits from visits where visits.m_id::bigint = m.m_id group by m_id) v2 on v2.m_id::bigint = m.m_id\nleft join lateral (select m_id, count(u_id) as uservisits from visits where m.m_id = visits.m_id::bigint and u_id= ? group by m_id) h on h.m_id::bigint = m.m_id\n" userid]))
 
 (defn get-guestbook [mountainid]
-  (sql/query db ["select\tu.id as userid,\n\t\tu.username as username,\n\t\tv.time as visittime,\n\t\tv.comment as comment\nfrom visits v inner join users u on v.u_id::bigint = u.id\nwhere v.m_id = ? order by visittime desc" mountainid] ))
+  (sql/query db ["select\tu.id as userid,\n\t\tmountain.name,\n\t\tu.username as username,\n\t\tv.time as visittime,\n\t\tv.comment as comment\nfrom visits v inner join users u on v.u_id::bigint = u.id\ninner join mountain on mountain.m_id = v.m_id::bigint\nwhere v.m_id = ? order by visittime desc" mountainid] ))
 
 (defn date-now []
   (str (java.time.LocalDateTime/now)))
