@@ -1,6 +1,7 @@
 .header .gjestebok, .header .ledere {
   width: 35%;
   text-align: center;
+    height: 100%;
 }
 .header .map {
     text-align: center;

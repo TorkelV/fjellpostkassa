@@ -1,6 +1,7 @@
 .header .gjestebok, .header .ledere {
     width: 35%;
     text-align: center;
+    height: 100%;
 }
 .header .active {
     /*background-color: #232323;*/
@@ -13,7 +14,7 @@
     width: 100%;
     text-align: center;
     height: 10vh;
-    background: #1E6995;
+    background: #1CA168;
     color: #fff;
     box-shadow: 0 8px 6px -6px black;
 }

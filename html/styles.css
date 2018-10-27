@@ -3,7 +3,7 @@
   text-align: center;
   height: 10vh;
   position: fixed;
-  background: #1E6995;
+  background: #1CA168;
   color: #fff;
     box-shadow: 0 8px 6px -6px black;
 }
@@ -59,7 +59,7 @@ a {
   transition: color 0.3s ease;
 }
 #menu a {
-    color: #232323
+    color: #fff;
 }
 #menuToggle {
   display: block;
@@ -118,7 +118,7 @@ a {
     width: 940px;
     margin: 69px 0 0 -53px;
     padding: 0 20px;
-    background: #b1d8ee;
+    background: #244939;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
@@ -162,6 +162,7 @@ a {
   margin: 10px 0 10px 0;
   background: #1E6995;
   color: #fff;
+    text-align: center;
 }
 .title {
     width: 100%;
@@ -192,10 +193,15 @@ a {
     margin: 0;
 }
 div .item:nth-last-child(even) {
-    background: #FFE0BA;
+    background: #fff;
+    /*background: #FFE0BA;*/
     /*81d8f4*/
     /*81d8d1*/
 }
 div .item:nth-last-child(odd) {
-    background: #81d8d1;
+    background: #16AA6B;
+    /*background: #81d8d1;*/
+}
+.header .active {
+    /*background: #16241E;*/
 }
