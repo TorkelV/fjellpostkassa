@@ -23,3 +23,13 @@
 .list table td {
     text-align: center;
 }
+.list caption {
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 30px;
+    height: 5vh;
+    background: #1E6995;
+    color: #fff;
+    box-shadow: 0 8px 6px -6px black;
+}
