@@ -59,7 +59,7 @@
                   group by u_id,username) a"]))
 
 (defn all-visits-mountain [mountainid]
-  (sql/query db ["SELECT RANK() OVER(ORDER BY a.c desc) as rank, \n\t   c as visits, username as name \nFROM (SELECT visits.u_id, count(visits.u_id) as c, users.username from visits \n\t  INNER JOIN users on users.id = visits.u_id::bigint\n\t  where m_id=?::char  GROUP BY visits.u_id, username) a\n" mountainid]))
+  (sql/query db ["SELECT DENSE_RANK() OVER(ORDER BY a.c desc) as rank, \n\t   c as visits, username as name \nFROM (SELECT visits.u_id, count(visits.u_id) as c, users.username from visits \n\t  INNER JOIN users on users.id = visits.u_id::bigint\n\t  where m_id=?::char  GROUP BY visits.u_id, username) a\n" mountainid]))
 
 (defn visits-mountain-for-user [userid mountainid]
   (sql/query db ["select count(u_id) as visits from visits where u_id = ? and m_id = ?" userid mountainid]))
