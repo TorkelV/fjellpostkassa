@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Profil</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-async-computed@3.4.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="profil.css">
 </head>
 <body>
+<div id="app">
     <div class="header">
         <div class="menu">
             <nav role="navigation">
@@ -25,8 +30,28 @@
                 </div>
             </nav>
         </div>
-        <div class="destinations gjestebok"><p class="fjell">Gjestebok</p></div>
-        <div class="leaderboard ledere"><p class="rangering">Ledere</p></div>
+        <div class="destinations gjestebok"><p class="fjell">Navn på bruker</p></div>
+        <div class="leaderboard ledere"><p class="rangering"></p></div>
+        <div class="map"><p class="kart"></p></div>
     </div>
+    <div class="list">
+        <div v-for="m in mountains" class="item">
+            <div class="image">
+                <p class="visits">{{m.uservisits}}</p>
+                <img class="itemimage" src="{{m.id}}.jpg">
+            </div>
+            <div class="content">
+                <div class="title">
+                    <div class="contentname"><p>{{m.mountainname}}</p></div>
+                    <div class="contentheight"><p>{{m.height}} moh</p></div>
+                </div>
+                <div class="subcontent">
+                    <p class="totalvisits">Antall besøk: {{m.totalvisits}}</p>
+                    <p class="lastvisit">Siste besøkende: {{m.lastvisitor}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
