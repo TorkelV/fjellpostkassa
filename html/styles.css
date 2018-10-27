@@ -205,3 +205,9 @@ div .item:nth-last-child(odd) {
 .header .active {
     /*background: #16241E;*/
 }
+.list table tr:nth-child(even) {
+    background-color: #FFE0BA;
+}
+.list table tr:nth-child(odd) {
+    background-color: #FFcc8f;
+}
