@@ -5,6 +5,7 @@
   position: fixed;
   background: #1E6995;
   color: #fff;
+    box-shadow: 0 8px 6px -6px black;
 }
 .header .destinations, .header .leaderboard, .header .map {
   display: inline-block;
@@ -53,9 +54,12 @@ body {
 }
 a {
   text-decoration: none;
-  color: #232323;
+  color: #fff;
   width: 100%;
   transition: color 0.3s ease;
+}
+#menu a {
+    color: #232323
 }
 #menuToggle {
   display: block;
@@ -188,8 +192,10 @@ a {
     margin: 0;
 }
 div .item:nth-last-child(even) {
-  background: #FFE0BA;
+    background: #FFE0BA;
+    /*81d8f4*/
+    /*81d8d1*/
 }
 div .item:nth-last-child(odd) {
-  background: #FFcc8f;
+    background: #81d8d1;
 }
