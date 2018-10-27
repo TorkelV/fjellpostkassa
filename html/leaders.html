@@ -30,9 +30,8 @@
                 </div>
             </nav>
         </div>
-        <div class="destinations gjestebok"><p class="fjell">Gjestebok</p></div>
-        <div class="leaderboard ledere"><p class="rangering">Ledere</p></div>
-        <div class="map"><p class="kart"></p></div>
+       <div v-on:click="location(mountainid)" class="destinations gjestebok"><p class="fjell">Gjestebok</p></div>
+        <div v-on:click="locationLeaders(mountainid)" class="leaderboard ledere"><p class="rangering">Ledere</p></div>
     </div>
     <div class="list">
         <table style="width:100%">

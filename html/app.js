@@ -65,6 +65,12 @@ var app = new Vue({
 				},
 				mountainLeaderboard(){
 					return allVisitsForMountain(this.mountainid).then(e=>e);
+				},
+				leaderboardTotal(){
+					return totalVisits().then(e=>e);
+				},
+				leaderboardUnique(){
+					return totalUniqueVisits().then(e=>e);
 				}
 			},
             watch: {
@@ -74,6 +80,9 @@ var app = new Vue({
             methods: {
                 location (mountainid) {
 					location.href="guestbook.html?mountainid="+mountainid
+				},
+				locationLeaders (mountainid){
+					location.href="leaders.html?mountainid="+mountainid
 				}
             }
         })

@@ -55,7 +55,7 @@
   (sql/query db ["SELECT DENSE_RANK() OVER(ORDER BY a.c desc) as rank, \n\t   c as visits, username as name \nFROM (SELECT visits.u_id, count(visits.u_id) as c, users.username from visits \n\t  INNER JOIN users on users.id = visits.u_id::bigint\n\t  GROUP BY visits.u_id, username) a"]))
 
 (defn total-unique-visits []
-  (sql/query db ["select rank() over (order by visits desc), visits,username \nfrom(select count(distinct m_id) as visits,u_id,username from visits\n\tinner join users on users.id=u_id::bigint
+  (sql/query db ["select dense_rank() over (order by visits desc) as rank, visits,username \nfrom(select count(distinct m_id) as visits,u_id,username from visits\n\tinner join users on users.id=u_id::bigint
                   group by u_id,username) a"]))
 
 (defn all-visits-mountain [mountainid]
