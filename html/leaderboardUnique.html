@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard Unike Fjell</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leaderboardUnique.css">
+</head>
+<body>
+<div id="app">
+    <div class="header">
+        <div class="menu">
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href="index.html"><li>Hjem</li></a>
+                        <a href="profil.html"><li>Profil</li></a>
+                        <a href="#"><li>Om appen</li></a>
+                        <a href="#"><li>Kontakt oss</li></a>
+                        <a href="#"><li>Logg ut</li></a>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="destinations gjestebok active"><p class="fjell">Unike Fjell</p></div>
+        <div class="leaderboard ledere"><p class="rangering">Total</p></div>
+        <div class="map"><p class="kart"></p></div>
+    </div>
+    <div class="list">
+        <table style="width:100%">
+            <tr>
+                <th>Rangering</th>
+                <th>Navn</th>
+                <th>Antall besøk</th>
+            </tr>
+            <tr v-for="user in guestbook">
+                <td>{{user.rank}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.total}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

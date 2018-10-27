@@ -1,0 +1,34 @@
+.header .gjestebok, .header .ledere {
+    width: 35%;
+    text-align: center;
+}
+.header .active {
+    /*background-color: #232323;*/
+}
+.header .map {
+    text-align: center;
+}
+.list table {
+    font-size: 40px;
+    border-collapse: collapse;
+}
+.list table th {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.list table tr {
+    height: 70px;
+}
+.list table td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.list table tr:nth-child(even) {
+    background-color: #FFE0BA;
+}
+.list table tr:nth-child(odd) {
+    background-color: #FFcc8f;
+}
+.list table td {
+    text-align: center;
+}
