@@ -53,7 +53,7 @@ var app = new Vue({
 					return jQuery.url().param("mountainid");
 				},
 				userid () {
-					return jQuery.url().param("userid");
+					return jQuery.url().param("user");
 				}
             },
 			asyncComputed: {
@@ -62,6 +62,9 @@ var app = new Vue({
 				},
 				guestbook (){
 					return getGuestbook(this.mountainid).then(e=>e.map(a=>(a.visittime=new Date(a.visittime).toLocaleString('en-GB').slice(0,-3),a)));
+				},
+				mountainLeaderboard(){
+					return allVisitsForMountain(this.mountainid).then(e=>e);
 				}
 			},
             watch: {

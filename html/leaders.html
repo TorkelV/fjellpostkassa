@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Ledere</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-async-computed@3.4.1"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="leaders.css">
 </head>
@@ -17,8 +21,8 @@
                     <span></span>
                     <span></span>
                     <ul id="menu">
-                        <a href="index.html"><li>Hjem</li></a>
-                        <a href="profil.html"><li>Profil</li></a>
+                        <a href="index.html?user=2"><li>Hjem</li></a>
+						<a href="profil.html?user=2"><li>Profil</li></a>
                         <a href="#"><li>Om appen</li></a>
                         <a href="#"><li>Kontakt oss</li></a>
                         <a href="#"><li>Logg ut</li></a>
@@ -37,13 +41,14 @@
                 <th>Navn</th>
                 <th>Antall besøk</th>
             </tr>
-            <tr v-for="user in guestbook">
+            <tr v-for="user in mountainLeaderboard">
                 <td>{{user.rank}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.total}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.visits}}</td>
             </tr>
         </table>
     </div>
     </div>
+	<script src="app.js"></script>
 </body>
 </html>
