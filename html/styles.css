@@ -207,3 +207,25 @@ div .item:nth-last-child(odd) {
 .list table tr:nth-child(odd) {
     background-color: #5EB2F2;
 }
+.header2 {
+    padding-top: 10vh;
+    width: 100%;
+    text-align: center;
+    height: 10vh;
+    background: #1E6995;
+    color: #fff;
+    box-shadow: 0 8px 6px -6px black;
+}
+.header2 .topper, .header2 .turer {
+    display: inline-block;
+    margin: 0;
+    font-size: 3em;
+    padding-top: 2.5vh;
+    color: #fff;
+}
+.header2 .topper {
+    width: 48%;
+}
+.header2 .turer {
+    width: 48%;
+}
