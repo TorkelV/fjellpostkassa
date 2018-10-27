@@ -18,8 +18,7 @@
     height: 70px;
 }
 .list table td {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
 }
 .list table tr:nth-child(even) {
     background-color: #FFE0BA;
