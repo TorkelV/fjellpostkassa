@@ -35,9 +35,10 @@
 </div>
 <div class="list">
     <div v-for="m in mountains" class="item">
-        <div class="image">
+        <div v-on:click="location(m.mountainid)">
+		<div class="image">
             <p class="visits">{{m.uservisits}}</p>
-            <img class="itemimage" src="{{m.id}}.jpg">
+            <img class="itemimage" :src="m.img">
         </div>
         <div class="content">
             <div class="title">
@@ -49,6 +50,7 @@
                 <p class="lastvisit">Siste besøkende: {{m.lastvisitor}}</p>
             </div>
         </div>
+		</div>
     </div>
 </div>
 </div>

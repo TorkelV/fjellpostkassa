@@ -46,20 +46,22 @@ getGuestbook("1",).then(e=>console.log(e));
 var app = new Vue({
             el: '#app',
             data: {
-                noDataFound: false,
-				userid: 1
+                
             },
             computed: {
 				mountainid () {
 					return jQuery.url().param("mountainid");
+				},
+				userid () {
+					return jQuery.url().param("userid");
 				}
             },
 			asyncComputed: {
 				mountains () {
-				  return getMountains().then(e=>e);
+				  return getMountains(this.userid).then(e=>e.map(o=>(o.img=o.mountainid+".jpg",o)));
 				},
 				guestbook (){
-					return getGuestbook(this.mountainid).then(e=>e);
+					return getGuestbook(this.mountainid).then(e=>e.map(a=>(a.visittime=new Date(a.visittime).toLocaleString('en-GB').slice(0,-3),a)));
 				}
 			},
             watch: {
@@ -67,6 +69,8 @@ var app = new Vue({
               } 
             },
             methods: {
-                
+                location (mountainid) {
+					location.href="guestbook.html?mountainid="+mountainid
+				}
             }
         })

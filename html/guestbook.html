@@ -36,13 +36,13 @@
     <div class="list">
         <table style="width:100%">
             <tr>
-                <th>Navn</th>
-                <th>Tid</th> 
+                <th>Besøkt</th>
+                <th>Navn</th> 
                 <th>Kommentar</th>
             </tr>
             <tr v-for="guest in guestbook">
+			    <td>{{guest.visittime}}</td> 
                 <td>{{guest.username}}</td>
-                <td>{{guest.visittime}}</td> 
                 <td>{{guest.comment}}</td>
             </tr>
         </table>
